@@ -2,13 +2,13 @@ var mapModules = (function () {
     mapboxgl.accessToken = 'pk.eyJ1IjoianBnOTYiLCJhIjoiY2thMXMwNnA4MDQ1ejNubjBuaG5qMmtvaiJ9.AmCUkdIpvj2wAv34RmizpA';
     var bounds = [
         [-117.573704, 31.075958], // Southwest coordinates
-        [-105.337386, 39.668166] // Northeast coordinates
+        [ -106.2597870826721, 38.13454813815107] // Northeast coordinates
     ];
     var map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/light-v9',
-        zoom: 6.33,
-        center: [-111.667150, 34.322034],
+        style: 'mapbox://styles/mapbox/satellite-v9',
+        zoom: 3.33,
+        center: [-111.62109375, 34.288991865037524],
         maxBounds: bounds
     });
     map.on('load', function() {
@@ -45,3 +45,8 @@ var mapModules = (function () {
         console.log(layersFinal);
     });
 })();
+
+//Test URLS:
+//https://api.mapbox.com/styles/v1/jpg96/cka7memyx1nxg1irv6niopflc?access_token=pk.eyJ1IjoianBnOTYiLCJhIjoiY2thMW4wcnJzMDJndDNtcXdkeDljOWgyMiJ9.zwsWHDCIn80YeHaXoRvU6Q
+//https://api.mapbox.com/v4/mapbox.satellite/page.html?access_token=pk.eyJ1IjoianBnOTYiLCJhIjoiY2thMXMwNnA4MDQ1ejNubjBuaG5qMmtvaiJ9.AmCUkdIpvj2wAv34RmizpA
+//https://api.mapbox.com/v4/cka7memyx1nxg1irv6niopflc/page.html?access_token=pk.eyJ1IjoianBnOTYiLCJhIjoiY2thMW4wcnJzMDJndDNtcXdkeDljOWgyMiJ9.zwsWHDCIn80YeHaXoRvU6Q
