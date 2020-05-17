@@ -38,6 +38,9 @@ nav{
 a{
     text-decoration: none;
 }
+.mapboxgl-ctrl-bottom-right{
+    display: none;
+}
 .font-body{
     color: #2A3132;
     font-family: 'Amiko', sans-serif;
