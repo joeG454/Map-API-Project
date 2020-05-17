@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Kadwa&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amiko&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,700&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
@@ -18,21 +19,21 @@
     <div class="d-50-50 d-flex flex-column justify-content-center">
         <div class="mx-auto my-3 d-flex" style="min-width: 200px;">
             <label class="switch">
-                <input type="checkbox" checked>
+                <input data-source="foo" type="checkbox" checked>
                 <span class="slider round"></span>
             </label>
             <p class="my-auto mx-3">Hiking</p>
         </div>
         <div class="mx-auto my-3 d-flex" style="min-width: 200px;">
             <label class="switch">
-                <input type="checkbox" checked>
+                <input type="checkbox" data-source="foo" checked>
                 <span class="slider round"></span>
             </label>
             <p class="my-auto mx-3">Single Track</p>
         </div>
         <div class="mx-auto my-3 d-flex" style="min-width: 200px;">
             <label class="switch">
-                <input type="checkbox" checked>
+                <input type="checkbox" data-source="foo" checked>
                 <span class="slider round"></span>
             </label>
             <p class="my-auto mx-3">Double Track</p>
@@ -46,5 +47,18 @@
 
 <script src="https://api.mapbox.com/mapbox-gl-js/v0.42.1/mapbox-gl.js"></script>
 <script src="src/js/main.js" type="text/javascript"></script>
+
+<script>
+    $(document).ready( function() {
+        $('.switch input').on('click', function(){
+            if($(this).is(":not(:checked)")){
+                hideLayerSource($(this).attr("data-source"));
+            }
+            else{
+                showLayerSource($(this).attr("data-source"));
+            }
+        });
+    });
+</script>
 </body>
 </html>

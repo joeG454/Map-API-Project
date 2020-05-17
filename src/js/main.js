@@ -1,4 +1,4 @@
-var mapModules = (function () {
+
     mapboxgl.accessToken = 'pk.eyJ1IjoianBnOTYiLCJhIjoiY2thMXMwNnA4MDQ1ejNubjBuaG5qMmtvaiJ9.AmCUkdIpvj2wAv34RmizpA';
     var bounds = [
         [-117.573704, 31.075958], // Southwest coordinates
@@ -11,6 +11,7 @@ var mapModules = (function () {
         center: [-111.62109375, 34.288991865037524],
         maxBounds: bounds
     });
+var mapModules = (function () {
     map.on('load', function() {
         var layers = map.getStyle().layers;
 
@@ -46,10 +47,13 @@ var mapModules = (function () {
                 'id': 'around-the-peaks',
                 'type': 'line',
                 'source': 'foo',
-                'layout': {},
+                'layout': {
+                    'visibility': 'visible'
+                },
                 'paint': {
                     'line-color': '#2196F3',
-                    'line-width': 3
+                    'line-width': 3,
+                    'line-opacity': 1
                 }
                 // This is the important part of this example: the addLayer
                 // method takes 2 arguments: the layer as an object, and a string
@@ -62,6 +66,26 @@ var mapModules = (function () {
         );
     });
 })();
+
+function hideLayerSource(id){
+    console.log('hide ' + id);
+    var layers = map.getStyle().layers;
+    for(i = 0; i < layers.length; i++){
+        if(layers[i].source == id){
+            map.setLayoutProperty(layers[i].id, 'visibility', 'none');
+        }
+    }
+}
+
+function showLayerSource(id){
+    console.log('show ' + id);
+    var layers = map.getStyle().layers;
+    for(i = 0; i < layers.length; i++){
+        if(layers[i].source == id){
+            map.setLayoutProperty(layers[i].id, 'visibility', 'visible');
+        }
+    }
+}
 
 //Test URLS:
 //https://api.mapbox.com/styles/v1/jpg96/cka7memyx1nxg1irv6niopflc?access_token=pk.eyJ1IjoianBnOTYiLCJhIjoiY2thMW4wcnJzMDJndDNtcXdkeDljOWgyMiJ9.zwsWHDCIn80YeHaXoRvU6Q
