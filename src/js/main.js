@@ -13,14 +13,14 @@ var mapModules = (function () {
     });
     map.on('load', function() {
         var layers = map.getStyle().layers;
-        for (var i = 0; i < layers.length; i++){
-            if(layers[i].type == "symbol"){
-                layers[i].layout.visibility = "none";
-            }
-        }
+
         map.addSource('az-cover', {
             'type': 'geojson',
             'data': 'src/trails/az-block.geojson'
+        });
+        map.addSource('foo', {
+            'type': 'geojson',
+            'data': 'src/trails/foo.geojson'
         });
         map.addLayer(
             {
@@ -41,8 +41,25 @@ var mapModules = (function () {
                 // Insert the layer beneath the first symbol layer.
             }
         );
-        var layersFinal = map.getStyle().layers;
-        console.log(layersFinal);
+        map.addLayer(
+            {
+                'id': 'around-the-peaks',
+                'type': 'line',
+                'source': 'foo',
+                'layout': {},
+                'paint': {
+                    'line-color': '#2196F3',
+                    'line-width': 3
+                }
+                // This is the important part of this example: the addLayer
+                // method takes 2 arguments: the layer as an object, and a string
+                // representing another layer's name. if the other layer
+                // exists in the stylesheet already, the new layer will be positioned
+                // right before that layer in the stack, making it possible to put
+                // 'overlays' anywhere in the layer stack.
+                // Insert the layer beneath the first symbol layer.
+            }
+        );
     });
 })();
 
