@@ -19,9 +19,21 @@ var mapModules = (function () {
             'type': 'geojson',
             'data': 'src/trails/az-block.geojson'
         });
-        map.addSource('foo', {
+        map.addSource('around-the-peaks', {
             'type': 'geojson',
-            'data': 'src/trails/foo.geojson'
+            'data': 'src/trails/around-the-peaks.geojson'
+        });
+        map.addSource('baja-100', {
+            'type': 'geojson',
+            'data': 'src/trails/baja-100.geojson'
+        });
+        map.addSource('locket-meadow', {
+            'type': 'geojson',
+            'data': 'src/trails/locket-meadow.geojson'
+        });
+        map.addSource('newham-loop', {
+            'type': 'geojson',
+            'data': 'src/trails/newham-loop.geojson'
         });
         map.addLayer(
             {
@@ -44,9 +56,9 @@ var mapModules = (function () {
         );
         map.addLayer(
             {
-                'id': 'around-the-peaks',
+                'id': 'single-track-1',
                 'type': 'line',
-                'source': 'foo',
+                'source': 'around-the-peaks',
                 'layout': {
                     'visibility': 'visible'
                 },
@@ -55,33 +67,76 @@ var mapModules = (function () {
                     'line-width': 3,
                     'line-opacity': 1
                 }
-                // This is the important part of this example: the addLayer
-                // method takes 2 arguments: the layer as an object, and a string
-                // representing another layer's name. if the other layer
-                // exists in the stylesheet already, the new layer will be positioned
-                // right before that layer in the stack, making it possible to put
-                // 'overlays' anywhere in the layer stack.
-                // Insert the layer beneath the first symbol layer.
+            }
+        );
+        map.addLayer(
+            {
+                'id': 'single-track-2',
+                'type': 'line',
+                'source': 'baja-100',
+                'layout': {
+                    'visibility': 'visible'
+                },
+                'paint': {
+                    'line-color': '#2196F3',
+                    'line-width': 3,
+                    'line-opacity': 1
+                }
+            }
+        );
+        map.addLayer(
+            {
+                'id': 'single-track-3',
+                'type': 'line',
+                'source': 'locket-meadow',
+                'layout': {
+                    'visibility': 'visible'
+                },
+                'paint': {
+                    'line-color': '#2196F3',
+                    'line-width': 3,
+                    'line-opacity': 1
+                }
+            }
+        );
+        map.addLayer(
+            {
+                'id': 'single-track-4',
+                'type': 'line',
+                'source': 'newham-loop',
+                'layout': {
+                    'visibility': 'visible'
+                },
+                'paint': {
+                    'line-color': '#2196F3',
+                    'line-width': 3,
+                    'line-opacity': 1
+                }
             }
         );
     });
 })();
 
-function hideLayerSource(id){
-    console.log('hide ' + id);
+function hideLayerSource(x){
+    console.log('hide ' + x);
     var layers = map.getStyle().layers;
     for(i = 0; i < layers.length; i++){
-        if(layers[i].source == id){
+        var layerID = layers[i].id.toString();
+        console.log('checking: ' + layerID)
+        if(layerID.includes(x)){
+            console.log("hide:" + layers[i].id);
             map.setLayoutProperty(layers[i].id, 'visibility', 'none');
         }
     }
 }
 
-function showLayerSource(id){
-    console.log('show ' + id);
+function showLayerSource(x){
+    console.log('show ' + x);
     var layers = map.getStyle().layers;
     for(i = 0; i < layers.length; i++){
-        if(layers[i].source == id){
+        var layerID = layers[i].id.toString();
+        console.log('checking: ' + layerID)
+        if(layerID.includes(x)){
             map.setLayoutProperty(layers[i].id, 'visibility', 'visible');
         }
     }
