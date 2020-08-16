@@ -15,23 +15,23 @@
 <body>
 
 <h1 class="text-center mx-auto my-3">Trails of Arizona</h1>
-<div class="display-flex">
+<div class="d-flex wrap-reverse mx-auto" style="max-width: 1400px;">
     <div class="d-50-50 d-flex flex-column justify-content-center">
-        <div class="mx-auto my-3 d-flex" style="min-width: 200px;">
+        <div class="mx-auto mr-lg-0 my-3 d-flex" style="min-width: 200px;">
+            <label class="switch">
+                <input type="checkbox" data-source="hiking" checked>
+                <span class="slider round red"></span>
+            </label>
+            <p class="my-auto mx-3">Hiking</p>
+        </div>
+        <div class="mx-auto mr-lg-0 my-3 d-flex" style="min-width: 200px;">
             <label class="switch">
                 <input data-source="single-track" type="checkbox" checked>
                 <span class="slider round"></span>
             </label>
             <p class="my-auto mx-3">Single Track</p>
         </div>
-        <div class="mx-auto my-3 d-flex" style="min-width: 200px;">
-            <label class="switch">
-                <input type="checkbox" data-source="foo" checked>
-                <span class="slider round"></span>
-            </label>
-            <p class="my-auto mx-3">Single Track</p>
-        </div>
-        <div class="mx-auto my-3 d-flex" style="min-width: 200px;">
+        <div class="mx-auto mr-lg-0 my-3 d-flex" style="min-width: 200px;">
             <label class="switch">
                 <input type="checkbox" data-source="foo" checked>
                 <span class="slider round"></span>
@@ -39,7 +39,7 @@
             <p class="my-auto mx-3">Double Track</p>
         </div>
     </div>
-    <div class="d-50-50 position-relative" style="min-height: 600px;">
+    <div class="d-50-50 position-relative" style="min-height: 650px; min-width: 650px;">
         <div id="map"></div>
     </div>
 </div>

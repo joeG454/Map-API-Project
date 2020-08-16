@@ -35,6 +35,10 @@ var mapModules = (function () {
             'type': 'geojson',
             'data': 'src/trails/newham-loop.geojson'
         });
+        map.addSource('scenic-trails', {
+            'type': 'geojson',
+            'data': 'src/trails/az-scenic-trails.geojson'
+        });
         map.addLayer(
             {
                 'id': 'az-cover-layer',
@@ -109,6 +113,21 @@ var mapModules = (function () {
                 },
                 'paint': {
                     'line-color': '#2196F3',
+                    'line-width': 3,
+                    'line-opacity': 1
+                }
+            }
+        );
+        map.addLayer(
+            {
+                'id': 'hiking',
+                'type': 'line',
+                'source': 'scenic-trails',
+                'layout': {
+                    'visibility': 'visible'
+                },
+                'paint': {
+                    'line-color': '#ff0800',
                     'line-width': 3,
                     'line-opacity': 1
                 }
